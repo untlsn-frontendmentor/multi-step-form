@@ -3,6 +3,9 @@ import 'untcss-reset';
 import { FirstPageFormInputs, SecondPageFormInputs } from '~/types/FormsInputs';
 const page = usePageNumber();
 
+onMounted(() => {
+	page.value = 1;
+});
 const formsValues = ref<[FirstPageFormInputs, SecondPageFormInputs, boolean[]]>([
 	{
 		name:  '',
