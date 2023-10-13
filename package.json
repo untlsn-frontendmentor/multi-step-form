@@ -16,11 +16,13 @@
     "vue-router": "^4.2.5"
   },
   "dependencies": {
+    "@iconify/json": "^2.2.128",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@types/eslint": "^8.44.3",
     "@typescript-eslint/parser": "^6.7.4",
     "@unocss/nuxt": "^0.56.5",
     "@vorms/core": "^1.1.0",
+    "@vueuse/nuxt": "^10.5.0",
     "eslint": "^8.51.0",
     "eslint-plugin-only-warn": "^1.1.0",
     "typescript": "^5.2.2",

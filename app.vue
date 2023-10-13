@@ -1,15 +1,29 @@
 <script setup lang="ts">
 import 'untcss-reset';
+import { FirstPageFormInputs, SecondPageFormInputs } from '~/types/FormsInputs';
 const page = usePageNumber();
+
+const formsValues = ref<[FirstPageFormInputs, SecondPageFormInputs, boolean[]]>([
+	{
+		name:  '',
+		email: '',
+		phone: '',
+	},
+	{
+		selected: 0,
+		isYearly: false,
+	},
+	[false, false, false],
+]);
 </script>
 
 <template>
   <main class="bg-[#EEF5FF] min-h-screen">
-    <article class="bg-white rounded-xl p-4 flex w-max mx-auto">
+    <article class="bg-white rounded-xl p-4 flex justify-stretch w-max mx-auto">
       <FormAside />
-      <LazySubformsPage1 v-if="page == 1" />
-      <LazySubformsPage2 v-else-if="page == 2" />
-      <LazySubformsPage3 v-else-if="page == 3" />
+      <LazySubformsPage1 v-if="page == 1" v-model:values="formsValues[0]" />
+      <LazySubformsPage2 v-else-if="page == 2" v-model:values="formsValues[1]" />
+      <LazySubformsPage3 v-else-if="page == 3" v-model:values="formsValues[2]" :yearly="formsValues[1].isYearly" />
       <LazySubformsPage4 v-else />
     </article>
   </main>

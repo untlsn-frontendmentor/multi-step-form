@@ -3,25 +3,23 @@ import { useForm } from '@vorms/core';
 import * as z from 'valibot';
 import passProxy from '~/composables/passProxy';
 import FormSubmitButton from '~/components/FormSubmitButton.vue';
+import { FirstPageFormInputs } from '~/types/FormsInputs';
 
-type FormInput = {
-	name:  string,
-	email: string,
-	phone: string,
-}
+const props = defineProps<{
+	values: FirstPageFormInputs,
+}>();
 
-const form = useForm<FormInput>({
-	initialValues: {
-		name:  '',
-		email: '',
-		phone: '',
-	},
+const emits = defineEmits<{ (e: 'update:values', values: FirstPageFormInputs): void }>();
+
+const form = useForm<FirstPageFormInputs>({
+	initialValues: props.values,
 	onSubmit (values) {
-		console.log(values);
+		emits('update:values', values);
+		navigateTo('/?page=2');
 	},
 });
 
-const names = passProxy<FormInput>();
+const names = passProxy<FirstPageFormInputs>();
 
 </script>
 
@@ -56,7 +54,7 @@ const names = passProxy<FormInput>();
         z.regex(/^\+\d+[ \d]+$/, 'Phone number is invalid e.g (+1 123 123 123)')
       ]"
     />
-    <FormSubmitButton />
+    <FormSubmitButton class="ml-auto mt-auto" />
   </form>
 </template>
 
