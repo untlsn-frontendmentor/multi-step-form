@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const page = usePageNumber();
+const page = usePageNumber(4);
 
 const stepsNames = [
 	'your info',

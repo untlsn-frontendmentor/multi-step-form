@@ -46,7 +46,7 @@ const totalPrice = computed(() => plan.value.price + selectedAdditional.value.re
             {{ it.title }}
           </p>
           <p>
-            {{ getPrice(it.price) }}
+            {{ getPrice(it.price, flat.isYearly) }}
           </p>
         </li>
       </ul>
@@ -56,7 +56,7 @@ const totalPrice = computed(() => plan.value.price + selectedAdditional.value.re
         Total (per {{ flat.isYearly ? 'year' : 'month' }})
       </p>
       <p class="text-lg font-semibold text-c-blue">
-        {{ getPrice(totalPrice) }}
+        {{ getPrice(totalPrice, flat.isYearly) }}
       </p>
     </div>
     <div class="flex justify-between items-center absolute bottom-0 left-0 w-full py-8 px-20">
