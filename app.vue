@@ -24,10 +24,14 @@ const formsValues = ref<[FirstPageFormInputs, SecondPageFormInputs, boolean[]]>(
   <main class="bg-[#EEF5FF] min-h-screen">
     <article class="bg-white rounded-xl p-4 flex justify-stretch w-max mx-auto">
       <FormAside />
-      <LazySubformsPage1 v-if="page == 1" v-model:values="formsValues[0]" />
-      <LazySubformsPage2 v-else-if="page == 2" v-model:values="formsValues[1]" />
+
+      <LazySubformsPage4
+        v-if="page == 4"
+        :data="formsValues"
+      />
       <LazySubformsPage3 v-else-if="page == 3" v-model:values="formsValues[2]" :yearly="formsValues[1].isYearly" />
-      <LazySubformsPage4 v-else />
+      <LazySubformsPage2 v-else-if="page == 2" v-model:values="formsValues[1]" />
+      <LazySubformsPage1 v-else v-model:values="formsValues[0]" />
     </article>
   </main>
 </template>

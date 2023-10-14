@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <button type="submit" class="bg-[#03295A] text-white hocus:bg-[#194989] px-6 py-3 rounded-lg">
+  <button type="submit" class="bg-c-navy text-white hocus:bg-c-blue px-6 py-3 rounded-lg">
     Next Step
   </button>
 </template>

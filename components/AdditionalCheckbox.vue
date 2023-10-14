@@ -1,12 +1,12 @@
 <script setup lang="ts">
-const props = defineProps<{
+import getPrice from '../utils/getPrice';
+
+defineProps<{
 	title:       string,
 	description: string,
 	price:       number,
-	modelValue:  boolean
 }>();
-const emit = defineEmits<{ (e: 'update:modelValue', selected: boolean): void }>();
-const selected = useVModel(props, 'modelValue', emit);
+const selected = defineModel<boolean>({ required: true });
 const yearly = inject(yearlyKey);
 </script>
 
@@ -28,7 +28,7 @@ const yearly = inject(yearlyKey);
       <p>{{ description }}</p>
     </div>
     <p class="text-[#565098] ml-auto">
-      +${{ yearly ? price * 10 : price }}/{{ yearly ? 'yr' : 'mo' }}
+      +{{ getPrice(price, yearly) }}
     </p>
   </div>
 </template>

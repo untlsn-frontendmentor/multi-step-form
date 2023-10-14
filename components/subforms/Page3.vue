@@ -1,26 +1,30 @@
 <script setup lang="ts">
+import FormTitle from '~/components/FormTitle.vue';
+import additionalData from '~/data/additionalData';
+
 const props = defineProps<{ values: boolean[], yearly?: boolean }>();
-defineEmits<{ (e: 'update:values', values: boolean[]): void }>();
+const emit = defineEmits<{ (e: 'update:values', values: boolean[]): void }>();
 const checked = ref(props.values || [false, false, false]);
 
 provide(yearlyKey, props.yearly);
+
+const onSubmit = () => {
+	emit('update:values', props.values);
+	navigateTo('/?page=4');
+};
 </script>
 
 <template>
-  <form class="py-8 px-20 flex-(~ col) space-y-4 relative" @submit.prevent="$emit('update:values', props.values)">
-    <h2 class="font-semibold text-3xl">
-      Pick add-ons
-    </h2>
-    <p class="text-[#919297]">
-      Add-ons help enhance your gaming experience.
-    </p>
-    <AdditionalCheckbox v-model="checked[0]" title="Online service" :price="1" description="Access to multiplayer games" />
-    <AdditionalCheckbox v-model="checked[1]" title="Larger storage" :price="2" description="Extra 1TB of cloud save" />
-    <AdditionalCheckbox v-model="checked[2]" title="Customizable Profile" :price="2" description="Custom theme on your profile" />
+  <form class="py-8 px-20 flex-(~ col) space-y-4 relative" @submit.prevent="onSubmit">
+    <FormTitle title="Pick add-ons" desc="Add-ons help enhance your gaming experience." />
+    <AdditionalCheckbox
+      v-for="(it, i) in additionalData"
+      :key="it.title"
+      v-model="checked[i]"
+      v-bind="it"
+    />
     <div class="flex justify-between items-center absolute bottom-0 left-0 w-full py-8 px-20">
-      <NuxtLink to="/?page=2" class="text-black">
-        Go back
-      </NuxtLink>
+      <GoPageButton page="2" />
       <FormSubmitButton />
     </div>
   </form>

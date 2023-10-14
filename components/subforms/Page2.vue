@@ -1,6 +1,7 @@
 <script setup lang="ts">
-
 import { SecondPageFormInputs } from '~/types/FormsInputs';
+import FormTitle from '~/components/FormTitle.vue';
+import plans from '~/data/plans';
 
 const props = defineProps<{
 	values: SecondPageFormInputs
@@ -8,28 +9,6 @@ const props = defineProps<{
 const emit = defineEmits<{ (e: 'update:values', values: SecondPageFormInputs): void }>();
 
 const data = ref<SecondPageFormInputs>(props.values);
-
-const prices = [
-	9,
-	12,
-	15,
-];
-
-const getPrice = (index: number) => {
-	let price = prices[index];
-	if (data.value.isYearly) {
-		price *= 10;
-	}
-	const type = data.value.isYearly ? 'yr' : 'mo';
-
-	return `$${price}/${type}`;
-};
-
-const radios = [
-	{ src: '/images/icon-arcade.svg', title: 'Arcade' },
-	{ src: '/images/icon-advanced.svg', title: 'Advanced' },
-	{ src: '/images/icon-pro.svg', title: 'Pro' },
-];
 
 
 const submit = () => {
@@ -41,19 +20,14 @@ const submit = () => {
 
 <template>
   <form class="py-8 px-20 flex-(~ col) space-y-4 relative" @submit.prevent="submit">
-    <h2 class="font-semibold text-3xl">
-      Select your plan
-    </h2>
-    <p class="text-[#919297]">
-      You have the option of monthly or yearly billing.
-    </p>
+    <FormTitle title="Select your plan" desc="You have the option of monthly or yearly billing." />
     <div class="flex justify-between gap-4">
       <BlockRadio
-        v-for="(it, i) in radios"
+        v-for="(it, i) in plans"
         :key="it.title"
         :selected="data.selected == i"
         v-bind="it"
-        :price="getPrice(i)"
+        :price="getPrice(it.price, data.isYearly)"
         @update:selected="data.selected = i"
       >
         <span v-if="data.isYearly" class="text-[#132F57]">2 months free</span>
@@ -72,9 +46,7 @@ const submit = () => {
     </div>
 
     <div class="flex justify-between items-center absolute bottom-0 left-0 w-full py-8 px-20">
-      <NuxtLink to="/?page=1" class="text-black">
-        Go back
-      </NuxtLink>
+      <GoPageButton page="1" />
       <FormSubmitButton />
     </div>
   </form>

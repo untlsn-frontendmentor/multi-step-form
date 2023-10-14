@@ -16,7 +16,7 @@ defineEmits<{ (e: 'update:selected', selected: boolean): void }>();
   >
     <img :src="src" alt="" class="mb-auto size-8">
     <b class="text-[#132F57]">{{ title }}</b>
-    <span class="text-[#919297]">{{ price }}</span>
+    <span class="text-text-gray">{{ price }}</span>
     <slot />
     <input
       type="radio"

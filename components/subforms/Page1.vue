@@ -4,6 +4,7 @@ import * as z from 'valibot';
 import passProxy from '~/composables/passProxy';
 import FormSubmitButton from '~/components/FormSubmitButton.vue';
 import { FirstPageFormInputs } from '~/types/FormsInputs';
+import FormTitle from '~/components/FormTitle.vue';
 
 const props = defineProps<{
 	values: FirstPageFormInputs,
@@ -25,13 +26,7 @@ const names = passProxy<FirstPageFormInputs>();
 
 <template>
   <form class="py-8 px-20 flex-(~ col)" @submit="form.handleSubmit">
-    <h2 class="font-semibold text-3xl">
-      Personal info
-    </h2>
-    <p class="text-[#919297]">
-      Please provide your name, email address, and phone number.
-    </p>
-
+    <FormTitle title="Personal info" desc="Please provide your name, email address, and phone number." />
     <FormInput
       label="Name"
       placeholder="e.g. Stephen King"
