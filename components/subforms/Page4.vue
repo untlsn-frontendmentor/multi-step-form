@@ -60,10 +60,10 @@ const totalPrice = computed(() => plan.value.price + selectedAdditional.value.re
       </p>
     </div>
     <div class="flex justify-between items-center absolute bottom-0 left-0 w-full py-8 px-20 max-lg:(fixed bg-white p-4)">
-      <GoPageButton page="3" />
-      <GoPageButton page="5" class="bg-c-navy text-white hocus:bg-c-blue px-6 py-3 rounded-lg">
+      <ButtonChangePage page="3" />
+      <ButtonChangePage page="5" class="bg-c-navy text-white hocus:bg-c-blue px-6 py-3 rounded-lg">
         Next Step
-      </GoPageButton>
+      </ButtonChangePage>
     </div>
   </article>
 </template>
