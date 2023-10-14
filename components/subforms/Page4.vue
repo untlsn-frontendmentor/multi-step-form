@@ -23,7 +23,7 @@ const totalPrice = computed(() => plan.value.price + selectedAdditional.value.re
 </script>
 
 <template>
-  <article class="py-8 px-20 flex-(~ col) space-y-4 relative">
+  <article class="py-8 px-20 flex-(~ col) space-y-4 relative max-lg:(max-w-90vw fixed z-10 inset-x-0 mx-auto top-32 bg-white rounded-xl)">
     <FormTitle title="Finishing up" desc="Double-check everything looks OK before confirming." />
     <section class="bg-[#F8F9FE] rounded-lg p-6">
       <div class="flex justify-between items-center border-b pb-4">
@@ -59,7 +59,7 @@ const totalPrice = computed(() => plan.value.price + selectedAdditional.value.re
         {{ getPrice(totalPrice, flat.isYearly) }}
       </p>
     </div>
-    <div class="flex justify-between items-center absolute bottom-0 left-0 w-full py-8 px-20">
+    <div class="flex justify-between items-center absolute bottom-0 left-0 w-full py-8 px-20 max-lg:(fixed bg-white p-4)">
       <GoPageButton page="3" />
       <GoPageButton page="5" class="bg-c-navy text-white hocus:bg-c-blue px-6 py-3 rounded-lg">
         Next Step

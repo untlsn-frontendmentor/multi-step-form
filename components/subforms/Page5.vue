@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <main class="flex-(~ col) justify-center items-center gap-4 text-center max-w-160 p-16 h-130">
+  <main class="flex-(~ col) justify-center items-center gap-4 text-center max-w-160 p-16 h-130 max-lg:(max-w-90vw fixed z-10 inset-x-0 mx-auto top-32 bg-white rounded-xl)">
     <img src="/images/icon-thank-you.svg" alt="">
     <h1 class="font-bold text-4xl mt-4">
       Thank you!

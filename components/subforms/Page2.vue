@@ -19,7 +19,7 @@ const submit = () => {
 </script>
 
 <template>
-  <form class="py-8 px-20 flex-(~ col) space-y-4 relative" @submit.prevent="submit">
+  <form class="py-8 px-20 flex-(~ col) space-y-4 relative max-lg:(max-w-90vw fixed z-10 inset-x-0 mx-auto top-32 bg-white rounded-xl)" @submit.prevent="submit">
     <FormTitle title="Select your plan" desc="You have the option of monthly or yearly billing." />
     <div class="flex justify-between gap-4">
       <BlockRadio
@@ -45,7 +45,7 @@ const submit = () => {
       <p>Yearly</p>
     </div>
 
-    <div class="flex justify-between items-center absolute bottom-0 left-0 w-full py-8 px-20">
+    <div class="flex justify-between items-center absolute bottom-0 left-0 w-full py-8 px-20 max-lg:(fixed bg-white p-4)">
       <GoPageButton page="1" />
       <FormSubmitButton />
     </div>

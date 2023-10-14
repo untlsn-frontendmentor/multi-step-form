@@ -13,7 +13,7 @@ defineProps<{
     >
       {{ step }}
     </div>
-    <div class="uppercase">
+    <div class="uppercase max-md:hidden">
       <p class="text-[#C1C2FF]">
         step {{ step }}
       </p>

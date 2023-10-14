@@ -25,7 +25,7 @@ const names = passProxy<FirstPageFormInputs>();
 </script>
 
 <template>
-  <form class="py-8 px-20 flex-(~ col)" @submit="form.handleSubmit">
+  <form class="py-8 px-20 flex-(~ col) max-lg:(max-w-90vw fixed z-10 inset-x-0 mx-auto top-32 bg-white rounded-xl)" @submit="form.handleSubmit">
     <FormTitle title="Personal info" desc="Please provide your name, email address, and phone number." />
     <FormInput
       label="Name"
@@ -49,7 +49,9 @@ const names = passProxy<FirstPageFormInputs>();
         z.regex(/^\+\d+[ \d]+$/, 'Phone number is invalid e.g (+1 123 123 123)')
       ]"
     />
-    <FormSubmitButton class="ml-auto mt-auto" />
+    <div class="text-right mt-auto max-lg:(fixed bottom-0 left-0 w-full bg-white p-4)">
+      <FormSubmitButton class="" />
+    </div>
   </form>
 </template>
 
